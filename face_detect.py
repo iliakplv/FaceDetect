@@ -28,6 +28,10 @@ for (x, y, w, h) in faces:
     vertical_outline = int(h * 0.3)
     cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
     cv2.rectangle(image, (x, y - vertical_outline), (x + w, y + h + vertical_outline), (0, 0, 255), 2)
+    crop_img = image[y - vertical_outline:y + h + vertical_outline, x:x + w]
+    cv2.imwrite('cropped.jpeg', crop_img)
+    cv2.imshow("cropped", crop_img)
+    cv2.waitKey(0)
 
-cv2.imshow("Faces found", image)
-cv2.waitKey(0)
+# cv2.imshow("Faces found", image)
+# cv2.waitKey(0)
