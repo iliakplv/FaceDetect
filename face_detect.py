@@ -11,7 +11,7 @@ multiple_cropped_path = dataset_root + 'hipster_multiple'
 casc_path = 'haarcascade_frontalface_default.xml'
 face_cascade = cv2.CascadeClassifier(casc_path)
 
-vertical_outline = 0.3
+vertical_padding = 0.25
 
 file_count = 1
 
@@ -37,13 +37,13 @@ for image_file_name in os.listdir(raw_image_path):
         cv2.imwrite(no_face_path + '/' + image_file_name, image)
     elif len(faces) == 1:
         (x, y, w, h) = faces[0]
-        offset = int(h * vertical_outline)
+        offset = int(h * vertical_padding)
         cropped_image = image[y - offset:y + h + offset, x:x + w]
         cv2.imwrite(single_cropped_path + '/' + image_file_name, cropped_image)
     else:
         face_count = 1
         for (x, y, w, h) in faces:
-            offset = int(h * vertical_outline)
+            offset = int(h * vertical_padding)
             cropped_image = image[y - offset:y + h + offset, x:x + w]
             tmp_file_name = str(file_count) + '_' + str(face_count) + '_' + image_file_name
             cv2.imwrite(multiple_cropped_path + '/' + tmp_file_name, cropped_image)
