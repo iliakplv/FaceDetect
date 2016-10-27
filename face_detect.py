@@ -3,10 +3,16 @@ import os
 import cv2
 
 dataset_root = '/Users/ilia/temp/hipster_dataset/'
+
 raw_image_path = dataset_root + 'hipster_raw'
 no_face_path = dataset_root + 'hipster_no_face'
 single_cropped_path = dataset_root + 'hipster'
 multiple_cropped_path = dataset_root + 'hipster_multiple'
+
+# raw_image_path = dataset_root + 'other_raw'
+# no_face_path = dataset_root + 'other_no_face'
+# single_cropped_path = dataset_root + 'other'
+# multiple_cropped_path = dataset_root + 'other_multiple'
 
 casc_path = 'haarcascade_frontalface_default.xml'
 face_cascade = cv2.CascadeClassifier(casc_path)
